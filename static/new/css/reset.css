@@ -1,0 +1,14 @@
+@charset "utf-8";
+/* CSS Document */
+/*Reset*/
+*{box-sizing:content-box;}
+a:hover, a:focus{text-decoration:none;}
+body,div{margin:0;padding:0;}
+body{-webkit-text-size-adjust:none;}
+
+.clearfix:after{visibility:hidden;display: block;font-size:0;content:" ";clear:both;height:0;}
+* html .clearfix{ zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+
+body{font-size:12px;font-family:'微软雅黑',"宋体","Arial Narrow",Helvetica,sans-serif;color:#000;line-height:1.2;text-align:left;}

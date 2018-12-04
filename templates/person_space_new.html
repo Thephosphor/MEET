@@ -1,0 +1,829 @@
+{#<!doctype html>#}
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>遇见--个人中心</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="http://file.g3.xmgc360.com/logo1.png">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+
+    <!-- Modernizer JS -->
+    <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        .testimg {
+            width: 30px
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Section Start -->
+<div class="header-section section">
+
+    <!-- Header Bottom Start -->
+    <div class="header-bottom header-bottom-one header-sticky">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col mt-15 mb-15">
+                    <!-- Logo Start -->
+                    <div class="header-logo">
+                        <a href="/fit/">
+                            <img src="http://file.g3.xmgc360.com/logo21.png" alt="">
+                            <img src="http://file.g3.xmgc360.com/logo1.png" alt="">
+                        </a>
+                    </div><!-- Logo End -->
+                </div>
+
+                <div class="col order-12 order-lg-2 order-xl-2 d-none d-lg-block">
+                    <!-- Main Menu Start -->
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="active"><a href="/fit/">匹配</a></li>
+                                <li class="menu-item-has-children"><a href="/guangchang">广场</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/guangchang">发布心里话</a>
+                                        </li>
+                                        <li class="menu"><a href="/duihua">我的会话</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="">测试</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/sd_ceshi">深度测试</a></li>
+                                        <li class="menu"><a href="/quwei_after">趣味测试</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    <a href="/person_space"><img src="{{ style_list.user_head }}" alt=""
+                                                                 style="width: 26px;height: 26px;border-radius: 100%;"></a>
+                                    <ul class="sub-menu">
+                                        <li><a href="/person_space">用户信息</a></li>
+                                        {% if user_list.user_admin == 1 %}
+                                            <li><a href="/admin">用户管理</a></li>
+                                            <li><a href="/admin/topic">主题管理</a></li>
+                                        {% endif %}
+                                        <li><a href="/jifenshop">会员任务</a></li>
+                                        <li><a href="/jifenshop">积分商城</a></li>
+                                        <li><a href="/Alogout/">退出登录</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- Main Menu End -->
+                </div>
+                <!-- Mobile Menu -->
+                <div class="mobile-menu order-12 d-block d-lg-none col"></div>
+
+            </div>
+        </div>
+    </div><!-- Header Bottom End -->
+
+</div><!-- Header Section End -->
+
+<!-- Cart Overlay -->
+<div class="cart-overlay"></div>
+
+<!-- Page Banner Section Start中间的图 -->
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>遇见</h1>
+                <h5>在远方，有一座默默的雪峰，雪峰下有一块石，石上留着一个名，虽寒冷，却一直温暖在岁月。总是一个人漂泊，匆匆地来，又款款而去，跋涉的足迹，在天涯，在海角，在彼此的心里。</h5>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">积分</a></li>
+                        <li><a href="#">商城</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201809/276367364172080361614629869.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201803/276365774454602849964222010.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+<!-- Blog Section Start -->
+<div class="blog-section section mt-90 mb-50">
+    <div class="container">
+        <div class="row row-40">
+
+            <div class="col-lg-8 col-12 order-1 order-lg-2 mb-40">
+                <div class="row" style="display: inline">
+
+                    <div class="col-12 mb-40">
+                        <div class="section-title-one mb-10" data-title="MEET"><h1>收藏</h1></div>
+                    </div>
+                    <!-- Blog Item -->
+                    {% for row in thought_list %}
+                        {% for x in shoucang_list %}
+                            {% if x.thought_id == row.thought_id %}
+                                <div class="col-12 mb-40" id="as{{ row.thought_id }}">
+                                    <div class="ee-blog">
+                                        {% for foo in style_list1 %}
+                                            {% if foo.user_id == row.thought_id %}
+                                                <h3>
+                                                <a href="/person_messages?id={{ row.user_id }}"><img src="{{ foo.user_head }}" class="img-circle" alt="头像"
+                                                     style="width: 80px;height: 80px;border-radius: 100%;"></a>
+                                                <span class="small">{{ foo.user_sign }}</span>
+                                            {% endif %}
+                                        {% endfor %}
+                                        </h3><span class="small">发布时间：{{ row.thought_time }}</span>
+                                        {% if row.thought_image %}
+                                            <div class="banner">
+                                                <a href="/pinglun_person?id={{ row.thought_id }}&uid={{ user_list.user_id }}"
+                                                   class="image"><img
+                                                        src="{{ row.thought_image }}" alt="图片"></a>
+                                            </div>
+                                        {% endif %}
+                                        <div class="content">
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;{{ row.thought_content }}</p>
+                                        </div>
+
+                                        <table width="100%" class="text-center">
+                                            <tr>
+                                        {% if row.dz_state == 1 %}
+                                            <td style="display: inline" id="dianzan{{ row.thought_id }}"
+                                                onclick="asl({{ user_id }},{{ row.thought_id }},1)">
+                                                <img src="http://file.g3.xmgc360.com/dianzan2.png" alt=""
+                                                     class="testimg"
+                                                     title="点赞" id="a11{{ row.thought_id }}">点赞<span
+                                                    id="a1{{ row.thought_id }}">{{ row.dz_num }}</span>
+                                            </td>
+                                        {% else %}
+                                            <td style="display: inline" id="dianzan{{ row.thought_id }}"
+                                                onclick="asl({{ user_id }},{{ row.thought_id }},1)">
+                                                <img src="http://file.g3.xmgc360.com/dianzan1.png" alt=""
+                                                     class="testimg"
+                                                     title="点赞" id="a11{{ row.thought_id }}">点赞<span
+                                                    id="a1{{ row.thought_id }}">{{ row.dz_num }}</span>
+                                            </td>
+                                        {% endif %}
+                                        {% if user_id == row.thought_id %}
+                                            <td><a href="/pinglun_person?id={{ row.thought_id }}"><img
+                                                    src="http://file.g3.xmgc360.com/pinglun1.png" alt="" class="testimg"
+                                                    title="点击查看评论详情">评论{{ row.comment_num }}</a>
+                                            </td>
+                                        {% else %}
+                                            <td><a href="/pinglun_public?id={{ row.thought_id }}"><img
+                                                    src="http://file.g3.xmgc360.com/pinglun1.png" alt="" class="testimg"
+                                                    title="点击查看评论详情">评论{{ row.comment_num }}</a>
+                                            </td>
+                                        {% endif %}
+                                        {% if row.sc_state == 1 %}
+                                            <td style="display: inline" id="dianzan{{ row.thought_id }}"
+                                                onclick="asl({{ user_id }},{{ row.thought_id }},2)">
+                                                <img src="http://file.g3.xmgc360.com/shoucang2.png" alt=""
+                                                     class="testimg"
+                                                     title="收藏" id="a22{{ row.sc_thought_idnum }}">收藏<span
+                                                    id="a2{{ row.thought_id }}">{{ row.sc_num }}</span></td>
+                                        {% else %}
+                                            <td style="display: inline" id="dianzan{{ row.thought_id }}"
+                                                onclick="asl({{ user_id }},{{ row.thought_id }},2)">
+                                                <img src="http://file.g3.xmgc360.com/shoucang1.png" alt=""
+                                                     class="testimg"
+                                                     title="收藏" id="a22{{ row.thought_id }}">收藏
+                                                <span id="a2{{ row.thought_id }}">{{ row.sc_num }}</span></td>
+                                        {% endif %}
+                                        <td onclick="asd({{ row.thought_id }},{{ user_id }})"><img src="http://file.g3.xmgc360.com/shanchu.png" alt=""
+                                                class="testimg" title="点击删除">删除
+                                        </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>{% endif %}
+                        {% endfor %}{% endfor %}
+
+                </div>
+
+            </div>
+
+            <!-- 左边导航栏 -->
+            <div class="col-lg-4 col-12 order-2 order-lg-1">
+
+                <div class="blog-sidebar mb-40">
+                    <ul>
+                        <li><a href="/person_space">心里话</a></li>
+                        <li><a href="/person_space_new">收藏</a></li>
+                    </ul>
+                </div>
+                <!-- 个人信息 -->
+                <div class="blog-sidebar mb-40">
+
+                    <h4 class="title">个人信息</h4>
+                    <ul id="xiugai">
+                        <li>
+                            <img src="{{ style_list.user_head }}" class="img-circle" alt="头像"
+                                 style="width: 60px;height: 60px;border-radius: 100%;cursor: pointer"
+                                 data-toggle="modal" data-target="#touxiang" title="点击修改头像"></li>
+                        <li data-toggle="modal" data-target="#qianming" title="点击修改个性签名">
+                            个性签名：{{ style_list.user_sign }}</li>
+                        <li data-toggle="modal" data-target="#qianming" title="点击修改个性标签">
+                            个性标签：{{ style_list.user_label }}</li>
+                        <li>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：{{ user_list.user_sex|safe }}</li>
+                        <li>生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日：{{ user_list.user_birth|safe }}</li>
+                        <li data-toggle="modal" data-target="#qianming" title="点击修改血型">血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：{{ user_list.user_blood|safe }}</li>
+                        <li>星&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;座：{{ user_list.user_star|safe }}</li>
+                        <li data-toggle="modal" data-target="#phone" title="点击修改手机号">手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机：{{ user_list.user_phone|safe }}</li>
+                        <li data-toggle="modal" data-target="#phone" title="点击修改邮箱">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱：{{ user_list.user_email|safe }}</li>
+                    </ul>
+                </div>
+
+                <!-- Blog Sidebar -->
+                <div class="blog-sidebar mb-40">
+
+                    <div class="banner"><a href="#"><img src="http://file.g3.xmgc360.com/logo1.png" alt="Banner"></a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div><!-- Blog Section End -->
+
+
+<!-- Brands Section Start -->
+<div class="brands-section section mb-90">
+    <div class="container">
+        <div class="row">
+
+            <!-- Brand Slider Start -->
+            <div class="brand-slider col">
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-1.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-2.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-3.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-4.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-5.png" alt="Brands"></div>
+            </div><!-- Brand Slider End -->
+
+        </div>
+    </div>
+</div><!-- Brands Section End -->
+
+<!-- Footer Section Start -->
+<div class="footer-section section bg-ivory">
+
+    <!-- Footer Top Section Start -->
+    <div class="footer-top-section section pt-90 pb-50">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">CONTACT INFO</h4>
+
+                        <p class="contact-info">
+                            <span>Address</span>
+                            You address will be here <br>
+                            Lorem Ipsum text </p>
+
+                        <p class="contact-info">
+                            <span>Phone</span>
+                            <a href="tel:01234567890">01234 567 890</a>
+                            <a href="tel:01234567891">01234 567 891</a>
+                        </p>
+
+                        <p class="contact-info">
+                            <span>Web</span>
+                            <a href="mailto:info@example.com">info@example.com</a>
+                            <a href="#">www.example.com</a>
+                        </p>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">CUSTOMER CARE</h4>
+
+                        <ul class="link-widget">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Cart</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">INFORMATION</h4>
+
+                        <ul class="link-widget">
+                            <li><a href="#">Track your order</a></li>
+                            <li><a href="#">Locate Store</a></li>
+                            <li><a href="#">Online Support</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Payment</a></li>
+                            <li><a href="#">Shipping & Returns</a></li>
+                            <li><a href="#">Gift coupon</a></li>
+                            <li><a href="#">Special coupon</a></li>
+                        </ul>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">LATEST TWEET</h4>
+
+                        <div class="footer-tweet"></div>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+            </div>
+
+        </div>
+    </div><!-- Footer Bottom Section Start -->
+
+    <!-- Footer Bottom Section Start -->
+    <div class="footer-bottom-section section">
+        <div class="container">
+            <div class="row">
+
+                <!-- Footer Copyright -->
+                <div class="col-lg-6 col-12">
+                    <div class="footer-copyright"><p>&copy; Copyright, 2018 All Rights Reserved by <a
+                            href="https://freethemescloud.com/">Free themes Cloud</a></p></div>
+                </div>
+
+                <!-- Footer Payment Support -->
+                <div class="col-lg-6 col-12">
+                    <div class="footer-payments-image"><img src="/static/assets/images/payment-support.png"
+                                                            alt="Payment Support Image"></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Footer Bottom Section Start -->
+
+</div><!-- Footer Section End -->
+
+<!-- 模态框（头像） -->
+<div class="modal fade" id="touxiang" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--初始头像 -->
+                <div class="text-center col-12">
+                    <img src="{{ style_list.user_head }}" alt=""
+                         style="width: 100px;height: 100px;border-radius: 100%;" id="cstouxiang"></div>
+            </div>
+            <!--可选择头像 -->
+            <h4>&nbsp;&nbsp;&nbsp;请选择头像：</h4>
+            <div class="col-12" style="padding: 2px" id="touxiang_imgs">
+                <img src="http://file.g3.xmgc360.com/Head_portrait1.jpg" alt="" id="img_1">
+                <img src="http://file.g3.xmgc360.com/Head_portrait2.jpg" alt="" id="img_2">
+                <img src="http://file.g3.xmgc360.com/Head_portrait3.jpg" alt="" id="img_3">
+                <img src="http://file.g3.xmgc360.com/Head_portrait5.jpg" alt="" id="img_4">
+                <img src="http://file.g3.xmgc360.com/Head_portrait6.jpg" alt="" id="img_5">
+                <img src="http://file.g3.xmgc360.com/Head_portrait7.jpg" alt="" id="img_6">
+                <img src="http://file.g3.xmgc360.com/Head_portrait8.jpg" alt="" id="img_7">
+                <img src="http://file.g3.xmgc360.com/Head_portrait9.jpg" alt="" id="img_8">
+                <img src="http://file.g3.xmgc360.com/Head_portrait10.jpg" alt="" id="img_9">
+                <img src="http://file.g3.xmgc360.com/Head_portrait11.jpg" alt="" id="img_10">
+                <img src="http://file.g3.xmgc360.com/Head_portrait12.jpg" alt="" id="img_11">
+                <img src="http://file.g3.xmgc360.com/Head_portrait13.jpg" alt="" id="img_12">
+                <img src="http://file.g3.xmgc360.com/Head_portrait15.jpg" alt="" id="img_13">
+                <img src="http://file.g3.xmgc360.com/Head_portrait16.jpg" alt="" id="img_14">
+                <img src="http://file.g3.xmgc360.com/Head_portrait17.jpg" alt="" id="img_15">
+                <img src="http://file.g3.xmgc360.com/Head_portrait18.jpg" alt="" id="img_16">
+                <img src="http://file.g3.xmgc360.com/Head_portrait19.jpg" alt="" id="img_17">
+                <img src="http://file.g3.xmgc360.com/Head_portrait20.jpg" alt="" id="img_18">
+                <img src="http://file.g3.xmgc360.com/Head_portrait21.jpg" alt="" id="img_19">
+                <img src="http://file.g3.xmgc360.com/Head_portrait22.jpg" alt="" id="img_20">
+                <img src="http://file.g3.xmgc360.com/Head_portrait23.jpg" alt="" id="img_21">
+                <img src="http://file.g3.xmgc360.com/Head_portrait24.jpg" alt="" id="img_22">
+                <img src="http://file.g3.xmgc360.com/Head_portrait26.jpg" alt="" id="img_23">
+                <img src="http://file.g3.xmgc360.com/Head_portrait28.jpg" alt="" id="img_24">
+                <img src="http://file.g3.xmgc360.com/Head_portrait29.jpg" alt="" id="img_25">
+                <img src="http://file.g3.xmgc360.com/Head_portrait30.jpg" alt="" id="img_26">
+                <img src="http://file.g3.xmgc360.com/Head_portrait31.jpg" alt="" id="img_27">
+                <img src="http://file.g3.xmgc360.com/Head_portrait32.jpg" alt="" id="img_28">
+                <img src="http://file.g3.xmgc360.com/Head_portrait33.jpg" alt="" id="img_29">
+                <img src="http://file.g3.xmgc360.com/Head_portrait34.jpg" alt="" id="img_30">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                </button>
+                <form action="/gaitouxiang">
+                    <input type="text" id="gtouxiang" style="display: none" name="gtouxiang">
+                    <input type="text" name="ids" value="{{ user_list.user_id }}" style="display: none">
+                    <input type="submit" class="btn btn-warning" value="确认更改"></form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（签名） -->
+<div class="modal fade" id="qianming" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form action="/gaiqianming">
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>个性签名：<input type="text" name="qianming" value="{{ style_list.user_sign }}"></td>
+                        </tr>
+                        <tr>
+                            <td>个性标签：<input type="text" name="biaoqian" value="{{ style_list.user_label }}"></td>
+                        </tr>
+                        <tr>
+                            <td>血&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;型：<input type="text" name="xuexing"
+                                                                                          value="{{ user_list.user_blood }}">
+                            </td>
+                        </tr>
+                        <input type="text" name="ids" value="{{ user_list.user_id }}" style="display: none">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <input type="submit" class="btn btn-warning" value="确认更改">
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（手机） -->
+<div class="modal fade" id="phone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+            </div>
+            <form method="post">
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>手&nbsp;&nbsp;&nbsp;机：<input type="text" name="shouji" id="shouji"
+                                                            placeholder="请输入新的手机号码..."></td>
+                        </tr>
+                        <tr>
+                            <td><p>&nbsp;</p></td>
+                        </tr>
+                        <tr>
+                            <td>邮&nbsp;&nbsp;&nbsp;箱：<input type="text" name="youxiang" id="youxiang"
+                                                            value="{{ user_list.user_email }}">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><p>&nbsp;</p></td>
+                        </tr>
+                        <tr>
+                            <td>验证码：<input type="text" placeholder="请输入验证码" name="syzm"></td>
+                            <td>
+                                <span id="send" style="text-decoration: underline;cursor: pointer">获取验证码</span>
+                            </td>
+                        </tr>
+                        <input type="text" name="ids" value="{{ user_list.user_id }}" style="display: none">
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <input type="submit" class="btn btn-warning" value="确认更改">
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- Popper JS -->
+<script src="/static/assets/js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/static/assets/js/bootstrap.min.js"></script>
+<!-- Plugins JS -->
+<script src="/static/assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="/static/assets/js/main1.js"></script>
+
+<!-- New JS -->
+<script src="/static/assets/js/new.js"></script>
+
+{#改头像#}
+<script>
+    var img_1 = document.getElementById("img_1");
+    var img_2 = document.getElementById("img_2");
+    var img_3 = document.getElementById("img_3");
+    var img_4 = document.getElementById("img_4");
+    var img_5 = document.getElementById("img_5");
+    var img_6 = document.getElementById("img_6");
+    var img_7 = document.getElementById("img_7");
+    var img_8 = document.getElementById("img_8");
+    var img_9 = document.getElementById("img_9");
+    var img_10 = document.getElementById("img_10");
+    var img_11 = document.getElementById("img_11");
+    var img_12 = document.getElementById("img_12");
+    var img_13 = document.getElementById("img_13");
+    var img_14 = document.getElementById("img_14");
+    var img_15 = document.getElementById("img_15");
+    var img_16 = document.getElementById("img_16");
+    var img_17 = document.getElementById("img_17");
+    var img_18 = document.getElementById("img_18");
+    var img_19 = document.getElementById("img_19");
+    var img_20 = document.getElementById("img_20");
+    var img_21 = document.getElementById("img_21");
+    var img_22 = document.getElementById("img_22");
+    var img_23 = document.getElementById("img_23");
+    var img_24 = document.getElementById("img_24");
+    var img_25 = document.getElementById("img_25");
+    var img_26 = document.getElementById("img_26");
+    var img_27 = document.getElementById("img_27");
+    var img_28 = document.getElementById("img_28");
+    var img_29 = document.getElementById("img_29");
+    var img_30 = document.getElementById("img_30");
+    var pics = document.getElementById("cstouxiang");
+    var text = document.getElementById('gtouxiang')
+    img_1.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_2.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_3.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_4.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_5.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_6.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_7.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_8.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_9.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_10.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_11.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_12.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_13.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_14.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_15.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_16.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_17.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_18.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_19.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_20.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_21.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_22.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_23.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_24.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_25.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_26.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_27.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_28.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_29.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+    img_30.addEventListener("click", function () {
+        pics.src = this.src;
+        text.value = this.src
+    }, false);
+</script>
+
+{#改电话邮箱#}
+<script>
+    $(function () {
+        $('#send').click(function () {
+            sendphone()
+        })
+    })
+
+    function sendphone() {
+        phone = $('#shouji').val();
+        if (phone) {
+            $.ajax({
+                url: "/phone_yzm",
+                type: 'POST',
+                data: {phone},
+            })
+        }
+    }
+</script>
+<script>
+    var lastTime = new Date().getTime();
+    var currentTime = new Date().getTime();
+    var timeOut = 15 * 60 * 1000;
+    {#var timeOut = 20 * 1000;#}
+    //设置超时时间: 10分
+    $(function () {
+        /* 鼠标移动事件 */
+        $(document).mouseover(function () {
+            lastTime = new Date().getTime(); //更新操作时间
+        });
+    });
+
+    function testTime() {
+        currentTime = new Date().getTime();
+        //更新当前时间
+        if (currentTime - lastTime > timeOut) {
+            //判断是否超时
+            var state = 1
+            $.ajax({
+                url: "/Alogout/",
+                type: 'POST',
+                data: {state}
+            })
+            console.log("超时");
+        }
+    }
+
+    /* 定时器 间隔1秒检测是否长时间未操作页面 */
+    window.setInterval(testTime, 1000);
+</script>
+<script>
+    function asd(tid,uid) {
+        $.ajax({
+            type: 'POST',
+            url: '/person_space/del',
+            data: {'tid': tid,'uid':uid},
+            dataType: 'json',
+            success: function (response) {
+                if(response){
+                    document.getElementById('as'+tid).style.display='none'
+                }
+            }
+        })
+    }
+    function asl(uid, tid, state) {
+        $.ajax({
+            type: 'POST',
+            url: '/guangchang/dzsc',
+            data: {'uid': uid, 'tid': tid, 'state': state},
+            dataType: 'json',
+            success: function (response) {
+                if (state == 1) {
+                    if (response) {
+                        document.getElementById('a11' + tid).src = "http://file.g3.xmgc360.com/dianzan1.png"
+                        document.getElementById('a1' + tid).innerText = parseInt(document.getElementById('a1' + tid).innerText) - 1
+                    }
+                    else {
+                        document.getElementById('a11' + tid).src = "http://file.g3.xmgc360.com/dianzan2.png"
+                        document.getElementById('a1' + tid).innerText = parseInt(document.getElementById('a1' + tid).innerText) + 1
+                    }
+                } else if (state == 2) {
+                    if (response) {
+                        document.getElementById('a22' + tid).src = "http://file.g3.xmgc360.com/shoucang1.png"
+                        document.getElementById('a2' + tid).innerText = parseInt(document.getElementById('a2' + tid).innerText) - 1
+                    }
+                    else {
+                        document.getElementById('a22' + tid).src = "http://file.g3.xmgc360.com/shoucang2.png"
+                        document.getElementById('a2' + tid).innerText = parseInt(document.getElementById('a2' + tid).innerText) + 1
+                    }
+                }
+            }
+        })
+    }
+</script>
+</body>
+
+</html>

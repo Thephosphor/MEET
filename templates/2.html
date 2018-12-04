@@ -1,0 +1,49 @@
+{#<!DOCTYPE html>#}
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="UTF-8">
+    <title>录音</title>
+    <script src="../static/assets/js/yuyin.js"></script>
+</head>
+<body>
+<audio controls autoplay id="audios"></audio>
+<input type="button" value="开始录音" onclick="startRecording()"/>
+<input type="button" value="停止录音" onclick="stopRecord()"/>
+<input type="button" value="播放录音" onclick="playRecord()"/>
+<script>
+    var recorder;
+    var audio = document.querySelector('#audios');
+
+    function startRecording() {
+        HZRecorder.get(function (rec) {
+            recorder = rec;
+            recorder.start();
+        });
+    }
+
+    function stopRecord() {
+        recorder.stop();
+        {#传输网址#}
+        url = '/css';
+        {#第二个参数为回调函数#}
+        var record = recorder.upload(url, function (a,e) {
+
+        });
+        debugger;
+    };
+    function obtainRecord() {
+        {#传输网址#}
+        url = '/css';
+        {#第二个参数为回调函数#}
+        var record = recorder.upload(url, 1);
+        debugger;
+    };
+
+
+    function playRecord() {
+        recorder.play(audio);
+    };
+</script>
+</body>
+</html>

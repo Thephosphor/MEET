@@ -1,0 +1,793 @@
+{#<!doctype html>#}
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>遇见--聊天</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="http://file.g3.xmgc360.com/logo1.png">
+    <!--//SDK-->
+    <script src="http://cdn.ronghub.com/RongIMLib-2.3.3.min.js"></script>
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css">
+
+    <link rel="stylesheet" href="/static/new_3/css/qq.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+
+    <!-- Modernizer JS -->
+    <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style>
+        .testimg {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+{% for row in style_list %}
+    {% if row.user_id == user_id %}
+        <input type="text" value="{{ row.user_token }}" id="user_token" style="display: none">
+        <input type="text" value="{{ row.user_head }}" id="selfhead" style="display: none">
+        <input type="text" value="{{ row.user_sign }}" id="selfsign" style="display: none">
+    {% endif %}
+    {% if row.user_id == lt_id %}
+        <input type="text" value="{{ row.user_head }}" id="otherhead" style="display: none">
+        <input type="text" value="{{ row.user_sign }}" id="othesign" style="display: none">
+    {% endif %}
+{% endfor %}
+<!-- Header Section Start -->
+<div class="header-section section">
+
+    <!-- Header Bottom Start -->
+    <div class="header-bottom header-bottom-one header-sticky">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col mt-15 mb-15">
+                    <!-- Logo Start -->
+                    <div class="header-logo">
+                        <a href="/fit/">
+                            <img src="http://file.g3.xmgc360.com/logo21.png" alt="">
+                            <img src="http://file.g3.xmgc360.com/logo1.png" alt="">
+                        </a>
+                    </div><!-- Logo End -->
+                </div>
+
+                <div class="col order-12 order-lg-2 order-xl-2 d-none d-lg-block">
+                    <!-- Main Menu Start -->
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="active"><a href="/fit/" target="_blank">匹配</a></li>
+                                <li class="menu-item-has-children"><a href="/guangchang">广场</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/guangchang">发布心里话</a>
+                                        </li>
+                                        <li class="menu"><a href="/duihua">我的会话</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a>测试</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/sd_ceshi">深度测试</a></li>
+                                        <li class="menu"><a href="/quwei_after">趣味测试</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    {% for foo in style_list %}
+                                        {% if foo.user_id == user_id %}
+                                            <a href="/person_space" target="_blank"><img src="{{ foo.user_head }}"
+                                                                                         alt=""
+                                                                                         style="width: 26px;height: 26px;border-radius: 100%;"></a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <ul class="sub-menu">
+                                        <li><a href="/person_space" target="_blank">用户信息</a></li>
+                                        {% if user_list.user_admin == 1 %}
+                                            <li><a href="/admin" target="_blank">用户管理</a></li>
+                                            <li><a href="/admin/topic" target="_blank">主题管理</a></li>
+                                        {% endif %}
+                                        <li><a href="/jifenshop" target="_blank">会员任务</a></li>
+                                        <li><a href="/jifenshop" target="_blank">积分商城</a></li>
+                                        <li><a href="/Alogout/">退出登录</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- Main Menu End -->
+                </div>
+                <!-- Mobile Menu -->
+                <div class="mobile-menu order-12 d-block d-lg-none col"></div>
+
+            </div>
+        </div>
+    </div><!-- Header Bottom End -->
+
+</div><!-- Header Section End -->
+
+<!-- Cart Overlay -->
+<div class="cart-overlay"></div>
+
+<!-- Page Banner Section Start中间的图 -->
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>遇见</h1>
+                <h5>在远方，有一座默默的雪峰，雪峰下有一块石，石上留着一个名，虽寒冷，却一直温暖在岁月。总是一个人漂泊，匆匆地来，又款款而去，跋涉的足迹，在天涯，在海角，在彼此的心里。</h5>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="#">积分</a></li>
+                        <li><a href="#">商城</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201809/276367364172080361614629869.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201803/276365774454602849964222010.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+<!-- Blog Section Start -->
+<div class="blog-section section mt-70 mb-50">
+    <div class="container">
+        <div class="row row-40">
+            <div class="col-lg-8 col-12 order-1 order-lg-2 mb-40">
+                <div class="row">
+                    <!--//内容框架-->
+                    <div class="qqBox" style="width: 85%">
+                        <div class="BoxHead">
+                            {% for foo in style_list %}
+                                {% if foo.user_id == lt_id %}
+                                    <div class="headImg">
+                                        <!--对方头像-->
+                                        <img src="{{ foo.user_head }}"
+                                             style="width: 50px;height: 50px;border-radius: 100%;">
+                                    </div>
+                                    <div class="internetName">{{ foo.user_sign }}</div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="context">
+                            <div class="conRight">
+                                <div class="RightCont">
+                                    <ul class="newsList" id="newsList">
+
+                                    </ul>
+                                </div>
+                                <div class="RightFoot">
+                                    <div class="inputBox">
+                                        <form action="" method="post">
+                                            <textarea id="dope"
+                                                      style="width: 99%;height: 75px; border: none;outline: none;"
+                                                      name="" rows="" cols=""></textarea>
+                                            <div class="sendBtn" id="send">发送(s)</div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blog Item -->
+                    {% for row in thought_list %}
+                        <div class="col-12 mb-40" id="jubao{{ row.thought_id }}" style="display: none">
+                            <form action="/jubao" method="post" enctype="multipart/form-data">
+                                <div class="blog-sidebar mb-10">
+                                </div>
+                                <textarea name="text"
+                                          style="border-radius: 10px;border: 1px solid #dcdcdc;overflow: auto;height: 100px"
+                                          autofocus class="col-12"></textarea>
+                                <input type="file" name="file">
+                                <input type="text" style="display: none" name="sent" value="{{ user_id }}">
+                                <input type="text" style="display: none" name="get" value="{{ row.user_id }}">
+                                <input type="text" style="display: none" name="thought" value="{{ row.thought_id }}">
+                                <div style="float: right">
+                                    <input type="button" class="btn btn-default" onclick="jubao({{ row.thought_id }})"
+                                           value="取消">
+                                    <input type="submit" class="btn btn-warning" value="提交"></div>
+                            </form>
+                        </div>
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+            <!-- 左边导航栏 -->
+            <div class="col-lg-4 col-12 order-2 order-lg-1">
+                <!-- Blog Sidebar三个词 -->
+                <div class="blog-sidebar mb-20">
+
+                    <h4 class="title">关注列表</h4>
+
+                    <ul style="overflow: auto;height: 350px">
+                        {% for row in gz_list %}
+                            {% for foo in style_list %}
+                                {% if foo.user_id == row.befollow_id %}
+                                    <li><a href="/person_messages?id={{ foo.user_id }}" target="_blank"><img
+                                            src="{{ foo.user_head }}"
+                                            alt="好友信息"
+                                            class="img-circle"
+                                            style="width: 50px;height: 50px;border-radius: 100%;"></a>
+                                        <a href="/duihua?lt_id={{ foo.user_id }}">
+                                            <button class="btn btn-outline-warning">聊天</button>
+                                        </a>
+                                        <a href="/quguan?id={{ row.befollow_id }}&lid={{ lt_id }}">
+                                            <button class="btn btn-warning" id="1">取关</button>
+                                        </a></li>
+                                {% endif %}
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Blog Sidebar -->
+                <div class="blog-sidebar mb-40">
+
+                    <div class="banner"><a><img src="http://file.g3.xmgc360.com/logo1.png" alt="Banner"></a>
+                    </div>
+                    <input type="text" value="{{ music_list.url_1 }}" id="music_1" style="display: none">
+                    <input type="text" value="{{ music_list.url_2 }}" id="music_2" style="display: none">
+                    <input type="text" value="{{ music_list.url_3 }}" id="music_3" style="display: none">
+                    <input type="text" value="{{ music_list.url_4 }}" id="music_4" style="display: none">
+                </div>
+                <div class="banner">
+                    {% if music == '0' %}
+                        <audio controls="controls" src="http://file.g3.xmgc360.com/music1-1.mp3"
+                               id="sc" title="缓冲中"></audio>
+                    {% endif %}
+                    {% if music == '1' %}
+                        <audio controls="controls" src="http://file.g3.xmgc360.com/music1-1.mp3"
+                               id="sc" title="缓冲中"></audio>
+                    {% endif %}
+                    {% if music == '2' %}
+                        <audio controls="controls" src="http://file.g3.xmgc360.com/music2-1.mp3"
+                               id="sc" title="缓冲中"></audio>
+                    {% endif %}
+                    <button onclick="fs(1)" class="btn btn-outline-warning" title="点击完等待音乐缓冲几秒钟">上一曲</button>
+                    <button onclick="fs(2)" class="btn btn-outline-warning" title="点击完等待音乐缓冲几秒钟">下一曲</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div><!-- Blog Section End -->
+
+<!-- Brands Section Start -->
+<div class="brands-section section mb-90">
+    <div class="container">
+        <div class="row">
+
+            <!-- Brand Slider Start -->
+            <div class="brand-slider col">
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-1.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-2.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-3.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-4.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-5.png" alt="Brands"></div>
+            </div><!-- Brand Slider End -->
+
+        </div>
+    </div>
+</div><!-- Brands Section End -->
+
+<!-- Footer Section Start -->
+<div class="footer-section section bg-ivory">
+
+    <!-- Footer Top Section Start -->
+    <div class="footer-top-section section pt-90 pb-50">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">CONTACT INFO</h4>
+
+                        <p class="contact-info">
+                            <span>Address</span>
+                            You address will be here <br>
+                            Lorem Ipsum text </p>
+
+                        <p class="contact-info">
+                            <span>Phone</span>
+                            <a href="tel:01234567890">01234 567 890</a>
+                            <a href="tel:01234567891">01234 567 891</a>
+                        </p>
+
+                        <p class="contact-info">
+                            <span>Web</span>
+                            <a href="mailto:info@example.com">info@example.com</a>
+                            <a href="#">www.example.com</a>
+                        </p>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">CUSTOMER CARE</h4>
+
+                        <ul class="link-widget">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Features</a></li>
+                            <li><a href="#">My Account</a></li>
+                            <li><a href="#">Cart</a></li>
+                            <li><a href="#">Checkout</a></li>
+                            <li><a href="#">Wishlist</a></li>
+                            <li><a href="#">blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">INFORMATION</h4>
+
+                        <ul class="link-widget">
+                            <li><a href="#">Track your order</a></li>
+                            <li><a href="#">Locate Store</a></li>
+                            <li><a href="#">Online Support</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Payment</a></li>
+                            <li><a href="#">Shipping & Returns</a></li>
+                            <li><a href="#">Gift coupon</a></li>
+                            <li><a href="#">Special coupon</a></li>
+                        </ul>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">LATEST TWEET</h4>
+
+                        <div class="footer-tweet"></div>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+            </div>
+
+        </div>
+    </div><!-- Footer Bottom Section Start -->
+
+    <!-- Footer Bottom Section Start -->
+    <div class="footer-bottom-section section">
+        <div class="container">
+            <div class="row">
+
+                <!-- Footer Copyright -->
+                <div class="col-lg-6 col-12">
+                    <div class="footer-copyright"><p>&copy; Copyright, 2018 All Rights Reserved by <a
+                            href="https://freethemescloud.com/">Free themes Cloud</a></p></div>
+                </div>
+
+                <!-- Footer Payment Support -->
+                <div class="col-lg-6 col-12">
+                    <div class="footer-payments-image"><img src="/static/assets/images/payment-support.png"
+                                                            alt="Payment Support Image"></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Footer Bottom Section Start -->
+
+</div><!-- Footer Section End -->
+
+<!-- JS============================================ -->
+
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- Popper JS -->
+<script src="/static/assets/js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/static/assets/js/bootstrap.min.js"></script>
+<!-- Plugins JS -->
+<script src="/static/assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="/static/assets/js/main1.js"></script>
+
+<!-- New JS -->
+<script src="/static/assets/js/new.js"></script>
+<script src="/static/new_3/js/jquery.min.js"></script>
+<input type="text" value="{{ lt_id }}" style="display: none" id="sid">
+<input type="text" value="{{ user_id }}" style="display: none" id="gid">
+<script>
+    document.getElementById("sc").volume = 0.3;
+
+    function fs(s) {
+        s1 = $('#music_1').val()
+        s2 = $('#music_2').val()
+        s3 = $('#music_3').val()
+        s4 = $('#music_4').val()
+        if (s == 2) {
+            if (document.getElementById('sc').src == s1) {
+                document.getElementById('sc').src = s2
+            }
+            else if (document.getElementById('sc').src == s2) {
+                document.getElementById('sc').src = s3
+            }
+            else if (document.getElementById('sc').src == s3) {
+                document.getElementById('sc').src = s4
+            }
+            else if (document.getElementById('sc').src == s4) {
+                document.getElementById('sc').src = s1
+            }
+        }
+        else if (s == 1) {
+            if (document.getElementById('sc').src == s1) {
+                document.getElementById('sc').src = s4
+            }
+            else if (document.getElementById('sc').src == s2) {
+                document.getElementById('sc').src = s1
+            }
+            else if (document.getElementById('sc').src == s3) {
+                document.getElementById('sc').src = s2
+            }
+            else if (document.getElementById('sc').src == s4) {
+                document.getElementById('sc').src = s3
+            }
+        }
+    }
+</script>
+<script>
+    $("#file").change(function () {
+        var readFile = new FileReader();
+        var mfile = $("#file")[0].files[0];  //注意这里必须时$("#myfile")[0]，document.getElementById('file')等价与$("#myfile")[0]
+        readFile.readAsDataURL(mfile);
+        readFile.onload = function () {
+            var img = $("#show");
+            img.attr("src", this.result);
+        }
+    });
+    $('#dwimg').click(function () {
+        if ($('#dwmsg').css('display') == 'none') {
+            $('#dwmsg').css('display', 'block');
+        } else {
+            $('#dwmsg').css('display', 'none');
+        }
+        if ($('#dwstate').value == 1) {
+            ($('#dwstate').val(0))
+        } else {
+            ($('#dwstate').val(1))
+        }
+    });
+
+    function jubao(x) {
+        div = document.getElementById('jubao' + x);
+        if (div.style.display == 'none') {
+            div.style.display = 'inline'
+        }
+        else {
+            div.style.display = 'none'
+        }
+    }
+</script>
+<script>
+    var lastTime = new Date().getTime();
+    var currentTime = new Date().getTime();
+    var timeOut = 15 * 60 * 1000;
+    {#var timeOut = 20 * 1000;#}
+    //设置超时时间: 10分
+    $(function () {
+        /* 鼠标移动事件 */
+        $(document).mouseover(function () {
+            lastTime = new Date().getTime(); //更新操作时间
+        });
+    });
+
+    function testTime() {
+        currentTime = new Date().getTime();
+        //更新当前时间
+        if (currentTime - lastTime > timeOut) {
+            //判断是否超时
+            var state = 1
+            $.ajax({
+                url: "/Alogout/",
+                type: 'POST',
+                data: {state}
+            })
+            console.log("超时");
+        }
+    }
+
+    /* 定时器 间隔1秒检测是否长时间未操作页面 */
+    window.setInterval(testTime, 1000);
+</script>
+<script>
+    RongIMLib.RongIMClient.init("z3v5yqkbz1bl0");   //初始化SDK
+    // 设置连接监听状态 （ status 标识当前连接状态 ）
+    // 连接状态监听器
+    RongIMClient.setConnectionStatusListener({
+        onChanged: function (status) {
+            switch (status) {
+                case RongIMLib.ConnectionStatus.CONNECTED:
+                    console.log('链接成功');
+                    break;
+                case RongIMLib.ConnectionStatus.CONNECTING:
+                    console.log('正在链接');
+                    break;
+                case RongIMLib.ConnectionStatus.DISCONNECTED:
+                    console.log('断开连接');
+                    break;
+                case RongIMLib.ConnectionStatus.KICKED_OFFLINE_BY_OTHER_CLIENT:
+                    console.log('其他设备登录');
+                    break;
+                case RongIMLib.ConnectionStatus.DOMAIN_INCORRECT:
+                    console.log('域名不正确');
+                    break;
+                case RongIMLib.ConnectionStatus.NETWORK_UNAVAILABLE:
+                    console.log('网络不可用');
+                    break;
+            }
+        }
+    });
+    // 消息监听器
+    RongIMClient.setOnReceiveMessageListener({
+        // 接收到的消息
+        onReceived: function (message) {
+            console.log(message);
+            // 判断消息类型
+            switch (message.messageType) {
+                case RongIMClient.MessageType.TextMessage:
+                    console.log(message["content"]["content"]);
+                    console.log(message["targetId"]);
+                    var content = message['content']['content'];
+                    answers(content);
+                    break;
+                case RongIMClient.MessageType.VoiceMessage:
+                    // 对声音进行预加载
+                    // message.content.content 格式为 AMR 格式的 base64 码
+                    break;
+                case RongIMClient.MessageType.ImageMessage:
+                    // message.content.content => 图片缩略图 base64。
+                    // message.content.imageUri => 原图 URL。
+                    break;
+                case RongIMClient.MessageType.DiscussionNotificationMessage:
+                    // message.content.extension => 讨论组中的人员。
+                    break;
+                case RongIMClient.MessageType.LocationMessage:
+                    // message.content.latiude => 纬度。
+                    // message.content.longitude => 经度。
+                    // message.content.content => 位置图片 base64。
+                    break;
+                case RongIMClient.MessageType.RichContentMessage:
+                    // message.content.content => 文本消息内容。
+                    // message.content.imageUri => 图片 base64。
+                    // message.content.url => 原图 URL。
+                    break;
+                case RongIMClient.MessageType.InformationNotificationMessage:
+                    // do something...
+                    break;
+                case RongIMClient.MessageType.ContactNotificationMessage:
+                    // do something...
+                    break;
+                case RongIMClient.MessageType.ProfileNotificationMessage:
+                    // do something...
+                    break;
+                case RongIMClient.MessageType.CommandNotificationMessage:
+                    // do something...
+                    break;
+                case RongIMClient.MessageType.CommandMessage:
+                    // do something...
+                    break;
+                case RongIMClient.MessageType.UnknownMessage:
+                    // do something...
+                    break;
+                default:
+                // do something...
+            }
+        }
+    });
+
+
+    //连接服务器
+    var token = document.getElementById('user_token').value;
+    //var token = '"'+document.getElementById('user_token').value+'"';
+    //alert(token)
+
+
+    RongIMClient.connect(token, {
+        onSuccess: function (userId) {
+            console.log("Connect successfully." + userId);
+        },
+        onTokenIncorrect: function () {
+            console.log('token无效');
+        },
+        onError: function (errorCode) {
+            var info = '';
+            switch (errorCode) {
+                case RongIMLib.ErrorCode.TIMEOUT:
+                    info = '超时';
+                    break;
+                case RongIMLib.ConnectionState.UNACCEPTABLE_PAROTOCOL_VERSION:
+                    info = '不可接受的协议版本';
+                    break;
+                case RongIMLib.ConnectionState.IDENTIFIER_REJECTED:
+                    info = 'appkey不正确';
+                    break;
+                case RongIMLib.ConnectionState.SERVER_UNAVAILABLE:
+                    info = '服务器不可用';
+                    break;
+            }
+            console.log(errorCode);
+        }
+    });
+    //重连
+    var callback = {
+        onSuccess: function (userId) {
+            console.log("Reconnect successfully." + userId);
+        },
+        onTokenIncorrect: function () {
+            console.log('token无效');
+        },
+        onError: function (errorCode) {
+            console.log(errorcode);
+        }
+    };
+    var config = {
+        // 默认 false, true 启用自动重连，启用则为必选参数
+        auto: true,
+        // 重试频率 [100, 1000, 3000, 6000, 10000, 18000] 单位为毫秒，可选
+        url: 'cdn.ronghub.com/RongIMLib-2.2.6.min.js',
+        // 网络嗅探地址 [http(s)://]cdn.ronghub.com/RongIMLib-2.2.6.min.js 可选
+        rate: [100, 1000, 3000, 6000, 10000]
+    };
+    RongIMClient.reconnect(callback, config);
+</script>
+
+
+<script>
+    // //对方接收win
+    var content = console.log(content);
+    {#if content>0:#}
+    $(console.log("链接成功"));
+
+    function answers(message) {
+        otherhead = $('#otherhead').val()
+        a = '"' + otherhead + '"';
+        answer = '<li>' +
+            '<div class="answerHead"><img src=' + a + 't/></div>' +
+            '<div class="answers"  id="messagetext"><img class="jiao" src="/static/new_3/img/jiao.jpg">' + message + '</div>' +
+            '</li>';
+        $('.newsList').append(answer);
+        $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight);
+    }
+</script>
+
+<input type="text" value="{{ lt_id }}" style="display: none" id="lt_id">
+<input type="text" value="{{ user_id }}" style="display: none" id="user_id">
+<script>
+    //发送
+    $('.conLeft li').on('click', function () {
+        $(this).addClass('bg').siblings().removeClass('bg');
+        var intername = $(this).children('.liRight').children('.intername').text();
+        $('.headName').text(intername);
+        $('.newsList').html('');
+    });
+
+
+    //我方说话
+    $('.sendBtn').on('click', function () {
+        var news = $('#dope').val();
+        // alert(news)
+        if (news == '') {
+            alert('不能为空');
+        } else {
+            $('#dope').val('');
+            var str = '';
+            selfhead = $('#selfhead').val();
+            b = '"' + selfhead + '"';
+            str += '<li>' +
+                '<div class="nesHead"><img src=' + b + '/></div>' +
+                '<div class="news"><img class="jiao" src="/static/new_3/img/20170926103645_03_02.jpg">' + news + '</div>' +
+                '</li>';
+            // $('#dope').val('999')
+            $('.newsList').append(str);
+            $('.RightCont').scrollTop($('.RightCont')[0].scrollHeight);
+
+
+            //发送消息对象
+            var msg = new RongIMLib.TextMessage({content: news, extra: news});
+            var conversationtype = RongIMLib.ConversationType.PRIVATE; // 单聊,其他会话选择相应的消息类型即可。
+            var targetId = $('#lt_id').val(); // 目标 Id
+            $.ajax({
+                type: 'POST',
+                url: '/liaotian',
+                data: {'uid': $('#user_id').val(),'lt_id':targetId,'news':news},
+                dataType: 'json',
+            });
+            var conversationType = RongIMLib.ConversationType.PRIVATE; //单聊,其他会话选择相应的消息类型即可。
+            var timestrap = null; // 默认传 null，若从头开始获取历史消息，请赋值为 0 ,timestrap = 0;
+            var count = 20; // 每次获取的历史消息条数，范围 0-20 条，可以多次获取。
+            RongIMLib.RongIMClient.getInstance().getHistoryMessages(conversationType, targetId, timestrap, count, {
+                onSuccess: function (list, hasMsg) {
+                    // list => Message 数组。
+                    // hasMsg => 是否还有历史消息可以获取。
+                },
+                onError: function (error) {
+                    console.log("GetHistoryMessages,errorcode:" + error);
+                }
+            });
+
+
+            RongIMClient.getInstance().sendMessage(conversationtype, targetId, msg, {
+                    onSuccess: function (message) {
+                        //message 为发送的消息对象并且包含服务器返回的消息唯一Id和发送消息时间戳
+                        console.log("Send successfully:" + targetId);
+                        console.log(msg);
+                    },
+                    onError: function (errorCode, message) {
+                        var info = '';
+                        switch (errorCode) {
+                            case RongIMLib.ErrorCode.TIMEOUT:
+                                info = '超时';
+                                break;
+                            case RongIMLib.ErrorCode.UNKNOWN_ERROR:
+                                info = '未知错误';
+                                break;
+                            case RongIMLib.ErrorCode.REJECTED_BY_BLACKLIST:
+                                info = '在黑名单中，无法向对方发送消息';
+                                break;
+
+                            default :
+                                info = x;
+                                break;
+                        }
+                        console.log('发送失败:' + info);
+                    }
+                }
+            );
+
+        }
+
+    })
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,436 @@
+{#<!doctype html>#}
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>遇见--下单页面</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/logo1.png">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+
+    <!-- Modernizer JS -->
+    <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+
+<!-- Header Section Start -->
+<div class="header-section section">
+
+    <!-- Header Bottom Start -->
+    <div class="header-bottom header-bottom-one header-sticky">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col mt-15 mb-15">
+                    <!-- Logo Start -->
+                    <div class="header-logo">
+                        <a href="/fit/">
+                            <img src="/static/assets/images/logo21.png" alt="">
+                            <img src="/static/assets/images/logo1.png" alt="">
+                        </a>
+                    </div><!-- Logo End -->
+                </div>
+
+                <div class="col order-12 order-lg-2 order-xl-2 d-none d-lg-block">
+                    <!-- Main Menu Start -->
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="active"><a href="/fit/">匹配</a></li>
+                                <li class="menu-item-has-children"><a href="/guangchang">广场</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/guangchang">发布心里话</a>
+                                        </li>
+                                        <li class="menu"><a href="/duihua">我的会话</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="">测试</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/sd_ceshi">深度测试</a></li>
+                                        <li class="menu"><a href="/quwei_after">趣味测试</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    {% for foo in style_list %}
+                                        {% if foo.user_id == user_id %}
+                                            <a href="/person_space"><img src="{{ foo.user_head }}" alt=""
+                                                                         style="width: 26px;height: 26px;border-radius: 100%;"></a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <ul class="sub-menu">
+                                        <li><a href="/person_space">用户信息</a></li>
+                                        {% if user_list.user_admin == 1 %}
+                                            <li><a href="/admin">用户管理</a></li>
+                                            <li><a href="/admin/topic">主题管理</a></li>
+                                        {% endif %}
+                                        <li><a href="/jifenshop">会员任务</a></li>
+                                        <li><a href="/jifenshop">积分商城</a></li>
+                                        <li><a href="/Alogout/">退出登录</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- Main Menu End -->
+                </div>
+                <!-- Mobile Menu -->
+                <div class="mobile-menu order-12 d-block d-lg-none col"></div>
+
+            </div>
+        </div>
+    </div><!-- Header Bottom End -->
+
+</div><!-- Header Section End -->
+
+<!-- Cart Overlay -->
+<div class="cart-overlay"></div>
+
+<!-- Page Banner Section Start中间的图 -->
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>遇见</h1>
+                <h5>在远方，有一座默默的雪峰，雪峰下有一块石，石上留着一个名，虽寒冷，却一直温暖在岁月。总是一个人漂泊，匆匆地来，又款款而去，跋涉的足迹，在天涯，在海角，在彼此的心里。</h5>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="/jifenshop">积分</a></li>
+                        <li><a href="/jifenshop">商城</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201809/276367364172080361614629869.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201803/276365774454602849964222010.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+<!-- Checkout Page Start -->
+<div class="page-section section mt-90 mb-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+
+                <!-- Checkout Form s-->
+                <form class="checkout-form" action="/xiadan" method="post">
+                    <div class="row row-40">
+                        <div class="col-lg-1 mb-20"></div>
+                        <div class="col-lg-10 mb-20">
+
+                            <!-- Billing Address -->
+                            <div id="billing-form" class="mb-40">
+                                <h4 class="checkout-title">确认下单信息</h4>
+
+                                <div class="row">
+                                    <div class="col-md-12 col-12 mb-20">
+                                        <label>商品信息</label>
+                                        <label>{{ shop_list.commodity_name }}</label>
+                                        <div class="col-md-9 col-12 mb-20">
+                                            <div id="single-image-1" class="tab-pane fade show active big-image-slider">
+                                                <!-- Image1 -->
+                                                <div class="big-image"><img
+                                                        src="{{ shop_list.commodity_images }}"
+                                                        alt="Big Image">
+                                                    <a href="{{ shop_list.commodity_images }}"
+                                                       class="big-image-popup"><i class="fa fa-search-plus"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20" id="addrname" style="display: block">
+                                        <label>姓名*</label>
+                                        <input type="button" value="{{ user_addr_list.user_name }}">
+                                        <input type="text" value="{{ user_addr_list.user_name }}" name="addrname" id="addrnameval" style="display: none">
+                                    </div>
+                                    <div class="col-md-6 col-12 mb-20" id="addrphone" style="display: block">
+                                        <label>电话号码*</label>
+                                        <input type="button" value="{{ user_addr_list.user_addr_phone }}">
+                                        <input type="text" value="{{ user_addr_list.user_addr_phone }}" name="addrphone" id="addrphoneval" style="display: none">
+                                    </div>
+                                    <div class="col-12 mb-20" id="addraddr" style="display: block">
+                                        <label>地址*</label>
+                                        <input type="button" value="{{ user_addr_list.user_addr }}">
+                                        <input type="text" value="{{ user_addr_list.user_addr }}" name="addraddr" id="addraddrval" style="display: none">
+                                    </div>
+                                    <div class="col-12 mb-20" id="addraddaddr" style="display: block">
+                                        <label>您还没有已保存地址，请点击新增收货地址进行添加！</label>
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <div class="check-box">
+                                            <input type="checkbox" id="shiping_address" data-shipping>
+                                            <label for="shiping_address">新增收货地址</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Shipping Address -->
+                            <div id="shipping-form" class="mb-40">
+                                <h4 class="checkout-title">填写下单地址</h4>
+
+                                <div class="row">
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>姓名*</label>
+                                        <input type="text" placeholder="请填写下单人姓名" name="addrnamenew" id="addrnamenewval">
+                                        <input type="text" id="comodityid" name="commodityid" style="display: none">
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb-20">
+                                        <label>电话号码*</label>
+                                        <input type="text" placeholder="请填写手机号码" name="addrphonenew" id="addrphonenewval">
+                                    </div>
+
+                                    <div class="col-12 mb-20">
+                                        <label>地址*</label>
+                                        <input type="text" placeholder="请填写详细地址" name="addraddrnew" id="addraddrnewval">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="row">
+                                    <input type="text" value="{{ user_list.user_integral }}" id="user_integral" style="display: none">
+                                    <input type="text" value="{{ shop_list.commodity_cost }}" id="commodity_cost" style="display: none">
+                                    <div class="col-12 mb-20" id="cantbuy" style="display: none">
+                                        <label>您的积分不足以购买该积分物品，请继续努力！</label>
+                                    </div>
+                                    <div class="col-12 mb-20" id="cantadd" style="display: none">
+                                        <label>您尚未填写收货地址，请完成地址填写！</label>
+                                    </div>
+                                    <button class="place-order" type="submit" id="submitcom">确认下单</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout Page End -->
+
+<!-- Brands Section Start -->
+<div class="brands-section section mb-90">
+    <div class="container">
+        <div class="row">
+
+            <!-- Brand Slider Start -->
+            <div class="brand-slider col">
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-1.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-2.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-3.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-4.png" alt="Brands"></div>
+                <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-5.png" alt="Brands"></div>
+            </div><!-- Brand Slider End -->
+
+        </div>
+    </div>
+</div><!-- Brands Section End -->
+
+<!-- Footer Section Start -->
+<div class="footer-section section bg-ivory">
+
+    <!-- Footer Top Section Start -->
+    <div class="footer-top-section section pt-90 pb-50">
+        <div class="container">
+
+            <div class="row">
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">CONTACT INFO</h4>
+
+                        <p class="contact-info">
+                            <span>Address</span>
+                            You address will be here <br>
+                            Lorem Ipsum text </p>
+
+                        <p class="contact-info">
+                            <span>Phone</span>
+                            <a href="tel:01234567890">01234 567 890</a>
+                        </p>
+
+                        <p class="contact-info">
+                            <span>Web</span>
+                            <a href="mailto:info@example.com">info@example.com</a>
+                        </p>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">CUSTOMER CARE</h4>
+
+                        <ul class="link-widget">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Features</a></li>
+                        </ul>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">INFORMATION</h4>
+
+                        <ul class="link-widget">
+                            <li><a href="#">Track your order</a></li>
+                            <li><a href="#">Locate Store</a></li>
+                        </ul>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+                <!-- Footer Widget Start -->
+                <div class="col-lg-3 col-md-6 col-12 mb-40">
+                    <div class="footer-widget">
+
+                        <h4 class="widget-title">LATEST TWEET</h4>
+
+                        <div class="footer-tweet"></div>
+
+                    </div>
+                </div><!-- Footer Widget End -->
+
+            </div>
+
+        </div>
+    </div><!-- Footer Bottom Section Start -->
+
+    <!-- Footer Bottom Section Start -->
+    <div class="footer-bottom-section section">
+        <div class="container">
+            <div class="row">
+
+                <!-- Footer Copyright -->
+                <div class="col-lg-6 col-12">
+                    <div class="footer-copyright"><p>&copy; Copyright, 2018 All Rights Reserved by <a
+                            href="https://freethemescloud.com/">MEET创意小组</a></p></div>
+                </div>
+
+            </div>
+        </div>
+    </div><!-- Footer Bottom Section Start -->
+
+</div><!-- Footer Section End -->
+
+
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- Popper JS -->
+<script src="/static/assets/js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/static/assets/js/bootstrap.min.js"></script>
+<!-- Plugins JS -->
+<script src="/static/assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="/static/assets/js/main1.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#comodityid').val({{ shop_list.commodity_id }})
+        var addrname=document.getElementById('addrnameval').value;
+        var addrphone=document.getElementById('addrphoneval').value;
+        var addraddr=document.getElementById('addraddrval').value;
+        var addrnamenew=document.getElementById('addrnamenewval').value;
+        var addrphonenew=document.getElementById('addrphonenewval').value;
+        var addraddrnew=document.getElementById('addraddrnewval').value;
+        var userintegral=document.getElementById('user_integral').value;
+        var commoditycost=document.getElementById('commodity_cost').value;
+        if(addrname == ''){
+            document.getElementById('addrname').style.display='none';
+            document.getElementById('addrphone').style.display='none';
+            document.getElementById('addraddr').style.display='none';
+            document.getElementById('addraddaddr').style.display='block';
+        }
+        else {
+            document.getElementById('addrname').style.display='block';
+            document.getElementById('addrphone').style.display='block';
+            document.getElementById('addraddr').style.display='block';
+            document.getElementById('addraddaddr').style.display='none';
+        }
+        if(parseInt(userintegral) < parseInt(commoditycost)){
+            $("#submitcom").attr('disabled',true);
+            document.getElementById('cantbuy').style.display='block';
+        }
+        else {
+            $("#submitcom").attr('disabled',false);
+            document.getElementById('cantbuy').style.display='none';
+        }
+    })
+</script>
+<script>
+    var lastTime = new Date().getTime();
+    var currentTime = new Date().getTime();
+    var timeOut = 15 * 60 * 1000;
+    {#var timeOut = 20 * 1000;#}
+    //设置超时时间: 10分
+    $(function(){
+        /* 鼠标移动事件 */
+        $(document).mouseover(function(){ lastTime = new Date().getTime(); //更新操作时间
+    });
+    });
+    function testTime(){ currentTime = new Date().getTime();
+    //更新当前时间
+    if(currentTime - lastTime > timeOut){
+        //判断是否超时
+        var state=1
+        $.ajax({url:"/Alogout/",
+                    type:'POST',
+                    data:{state}})
+    console.log("超时"); } }
+    /* 定时器 间隔1秒检测是否长时间未操作页面 */
+    window.setInterval(testTime, 1000);
+</script>
+</body>
+
+</html>

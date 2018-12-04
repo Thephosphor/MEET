@@ -1,0 +1,315 @@
+{#<!DOCTYPE html>#}
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <title>遇见--游戏中心</title>
+    <link rel="shortcut icon" type="image/x-icon" href="http://file.g3.xmgc360.com/logo1.png>
+
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+
+    <!-- Modernizer JS -->
+    <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <style type="text/css" media="screen">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        img{
+            border:0;
+        }
+        ol, ul ,li{list-style: none;}
+
+
+            html,body{
+                /* background: url('img/bj.jpg'); */
+                height:100%;
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                -khtml-user-select: none;
+                user-select: none;
+                font-family:sans-serif;
+            }
+          .layout{
+                width:100%;
+                height:100%;
+                margin: 0 auto;
+                background: url('/static/new_2/img/bj.jpg') center bottom /100% auto;
+                /* background:#505149; */
+                position: relative;
+                overflow: hidden;
+                animation:movebg 3000s linear infinite;
+                -moz-animation:movebg 3000s linear infinite; /* Firefox */
+                -webkit-animation:movebg 3000s linear infinite; /* Safari and Chrome */
+                -o-animation:movebg 3000s linear infinite; /* Opera */
+
+            }
+            .plane{
+                width:110px;
+                height:90px;
+                /* background:#fff; */
+                background:url('/static/new_2/img/P.png') 0 -101px no-repeat;
+                position: absolute;
+                bottom:0;
+                left:50%;
+                cursor:pointer;
+            }
+            .b1{
+                width:5px;
+                height:15px;
+                border-radius:50% 50% 5px 5px;
+                background:#fff;
+                position: absolute;
+                top:-50px;
+                left:50%;
+            }
+            .enemy0{
+                width:126px;
+                height:81px;
+                /* background:yellow; */
+                background:url('/static/new_2/img/P.png') -377px 0 no-repeat;
+                position: absolute;
+                top:-70px;
+                left:20px;
+            }
+            .enemy1{
+                width:108px;
+                height:81px;
+                /* background:green; */
+                background:url('/static/new_2/img/P.png') 0 0 no-repeat;
+                position: absolute;
+                top:-150px;
+                left:600px;
+            }
+            .enemy2{
+                width:126px;
+                height:87px;
+                /* background:blue; */
+                background:url('/static/new_2/img/P.png') -242px 0 no-repeat;
+                position: absolute;
+                top:-400px;
+                left:80px;
+            }
+            .enemy3{
+                width:120px;
+                height:101px;
+                /* background:red; */
+                background:url('/static/new_2/img/P.png') -114px 0 no-repeat;
+                position: absolute;
+                top:-60px;
+                left:510px;
+            }
+            .b2{
+                width:10px;
+                height:10px;
+                position: absolute;
+                border-radius:50%;
+                left:50%;
+                bottom: -50px;
+                background:#fff;
+            }
+
+            .score{
+                display: none;
+                padding: 10px 15px;
+                font-size:30px;
+                font-weight:bold;
+                color:#99B2D6;
+                background:#031540;
+                border:5px solid #425579;
+                border-radius:0 50px 50px 0;
+                position: absolute;
+                top:20px;
+                left:20px;
+                z-index:1000000;
+
+                /* background:red; */
+            }
+
+            @keyframes movebg
+            {
+                from {background-position:0 10000%;} to {background-position:0 0%;}
+            }
+
+            @-moz-keyframes movebg /* Firefox */
+            {
+                from {background-position:0 10000%;} to {background-position:0 0;}
+            }
+
+            @-webkit-keyframes movebg /* Safari and Chrome */
+            {
+                from {background-position:0 10000%;} to {background-position:0 0%;}
+            }
+
+            @-o-keyframes movebg /* Opera */
+            {
+                from {background-position:0 10000%;} to {background-position:0 0;}
+            }
+            #start{
+                width: 100%;
+                height:100%;
+                background:rgba(0, 0, 0, 0.7);
+                position: absolute;
+                top:0;
+                left:0;
+            }
+            #startBtn{
+                background:blue;
+                color: #fff;
+                font-size:50px;
+                margin:100px 0 0 -115px;
+                padding: 10px 30px;
+                border:5px solid #fff;
+                border-radius:50px;
+                position: absolute;
+                top:50%;
+                left:50%;
+                outline:none;
+                cursor:pointer;
+            }
+            #name-over{
+                font-family:'微软雅黑',sans-serif;
+                width:100%;
+                padding: 120px 0 10px;
+                margin: -200px 0 0 0;
+                font-size:50px;
+                font-weight:bold;
+                text-align:center;
+                color:rgba(106,124,197,1);
+                line-height:70px;
+                background:rgba(106,124,197,0.5) url('/static/new_2/img/P1.png') center 20px no-repeat;
+                position: absolute;
+                top:50%;
+                left:0;
+            }
+    </style>
+</head>
+<body>
+<!-- Header Section Start -->
+<div class="header-section section">
+
+    <!-- Header Bottom Start -->
+    <div class="header-bottom header-bottom-one header-sticky">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col mt-15 mb-15">
+                    <!-- Logo Start -->
+                    <div class="header-logo">
+                        <a href="/fit/">
+                            <img src="http://file.g3.xmgc360.com/logo2.png" alt="">
+                            <img src="http://file.g3.xmgc360.com/logo1.png" alt="">
+                        </a>
+                    </div><!-- Logo End -->
+                </div>
+
+                <div class="col order-12 order-lg-2 order-xl-2 d-none d-lg-block">
+                    <!-- Main Menu Start -->
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="active"><a href="/fit/">匹配</a></li>
+                                <li class="menu-item-has-children"><a href="/guangchang">广场</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/guangchang">发布心里话</a>
+                                        </li>
+                                        <li class="menu"><a href="single-product.html">我的会话</a>
+                                        <li class="menu"><a href="/game">休闲游戏</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a>测试</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/sd_ceshi">深度测试</a></li>
+                                        <li class="menu"><a href="/quwei_after">趣味测试</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    {% for foo in style_list %}
+                                        {% if foo.user_id == user_id %}
+                                            <a href="/person_space"><img src="{{ foo.user_head }}" alt=""
+                                                                         style="width: 26px;height: 26px;border-radius: 100%;"></a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <ul class="sub-menu">
+                                        <li><a href="/person_space">用户信息</a></li>
+                                        {% if user_list.user_admin == 1 %}
+                                            <li><a href="/admin">用户管理</a></li>
+                                            <li><a href="/admin/topic">主题管理</a></li>
+                                        {% endif %}
+                                        <li><a href="/jifenshop">会员任务</a></li>
+                                        <li><a href="/jifenshop">积分商城</a></li>
+                                        <li><a href="/Alogout/">退出登录</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- Main Menu End -->
+                </div>
+                <!-- Mobile Menu -->
+                <div class="mobile-menu order-12 d-block d-lg-none col"></div>
+
+            </div>
+        </div>
+    </div><!-- Header Bottom End -->
+
+</div><!-- Header Section End -->
+
+
+
+
+
+    <audio id="bgmuc" autoplay loop src="/static/new_2/audio/bjyy.mp3"></audio>
+    <audio id="fire" loop src="/static/new_2/audio/9519.mp3"></audio>
+    <audio id="boom" src="/static/new_2/audio/baoza.mp3"></audio>
+    <audio id="bigboom" src="/static/new_2/audio/bigboom.mp3"></audio>
+    <div class="layout" id="layout"></div>
+    <div class="score">得分：
+        <span id="score">0</span>
+    </div>
+    <div id="start">
+        <div id="name-over"><i>Plane Wars</i><p>0</p></div>
+        <input id="startBtn" type="button" name="mystartBtn" value="START">
+    </div>
+
+</body>
+<script src="/static/new_2/js/main.js"></script>
+<script>
+    var lastTime = new Date().getTime();
+    var currentTime = new Date().getTime();
+    var timeOut = 15 * 60 * 1000;
+    {#var timeOut = 20 * 1000;#}
+    //设置超时时间: 10分
+    $(function(){
+        /* 鼠标移动事件 */
+        $(document).mouseover(function(){ lastTime = new Date().getTime(); //更新操作时间
+    });
+    });
+    function testTime(){ currentTime = new Date().getTime();
+    //更新当前时间
+    if(currentTime - lastTime > timeOut){
+        //判断是否超时
+        var state=1
+        $.ajax({url:"/Alogout/",
+                    type:'POST',
+                    data:{state}})
+    console.log("超时"); } }
+    /* 定时器 间隔1秒检测是否长时间未操作页面 */
+    window.setInterval(testTime, 1000);
+</script>
+</html>

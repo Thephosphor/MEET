@@ -1,0 +1,168 @@
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>密码重置</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/new/images/logo.png">
+    <link rel="stylesheet" media="screen" href="/static/new/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/new/css/reset.css">
+    <link href="/static/new/css/base.css" rel="stylesheet">
+    <link href="/static/new/css/index.css" rel="stylesheet">
+    <link href="/static/new/css/m.css" rel="stylesheet">
+    <script src="/static/new/js/jquery.min.js"></script>
+    <script src="/static/new/js/jquery.easyfader.min.js"></script>
+    <script src="/static/new/js/hc-sticky.js"></script>
+    <script src="/static/new/js/comm.js"></script>
+    <script src="/static/new/js/scrollReveal.js"></script>
+</head>
+<body>
+
+<div id="particles-js">
+    <div class="sk-rotating-plane"></div>
+</div>
+<script src="http://files.g3.xmgc360.com/particles.min.js"></script>
+<script src="http://files.g3.xmgc360.com/app.js"></script>
+<header class="header-navigation" id="header">
+    <nav>
+        <div class="logo"><a href="/">MEET</a></div>
+        <h2 id="mnavh"><span class="navicon"></span></h2>
+        <ul id="starlist">
+         <li class="active"><a href="/">首页</a></li>
+            <li class="menu"><a>广场</a>
+                <ul class="sub">
+                    <li><a>发布心里话</a></li>
+                    <li><a>我的会话</a></li>
+                </ul>
+            </li>
+            <li class="menu"><a href="/qw_ceshi_before">测试</a>
+                <ul class="sub">
+                    <li><a>深度测试</a></li>
+                    <li><a>趣味测试</a></li>
+                </ul>
+            </li>
+            <li class="menu"><a>用户</a>
+                <ul class="sub">
+                    <li><a href="/login/">登录</a></li>
+                    <li><a href="/register/">注册</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="searchbox">
+            <div id="search_bar" class="search_bar">
+                <form id="searchform" method="post" name="searchform">
+                    <input class="input" placeholder="想搜点什么呢.." type="text" name="keyboard" id="keyboard">
+                    <input type="hidden" name="show" value="title"/>
+                    <input type="hidden" name="tempid" value="1"/>
+                    <input type="hidden" name="tbname" value="news">
+                    <input type="hidden" name="Submit" value="搜索"/>
+                    <p class="search_ico"><span></span></p>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<div class="login">
+    <div class="login-top">密码修改</div>
+    <form action="" method="post" class="form">
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="http://yanshi.sucaihuo.com/modals/49/4979/demo/img/name.png"/></div>
+            <div class="login-center-input">
+                <input type="text" name="phone" id="phone" value="" placeholder="请输入您的手机号" onfocus="this.placeholder=''"
+                       onblur="this.placeholder='请输入手机号码'"/>
+                <div class="login-center-input-text">手机号</div>
+                <span id="phone_1" style="display: none;color: red">该账户不存在，请先去注册</span>
+            </div>
+        </div>
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="http://yanshi.sucaihuo.com/modals/49/4979/demo/img/password.png"/>
+            </div>
+            <div class="login-center-input">
+                <input type="password" name="userpass" id="pw" value="" placeholder="请输入您的修改密码"
+                       onfocus="this.placeholder=''" onblur="mima()"/>
+                <div class="login-center-input-text">修改密码</div>
+                <span id="pw_1" style="display: none;color: red">密码由数字和字母组成</span>
+                <span id="pw_2" style="display: none;color: red">密码不能少于6位</span>
+                <span id="pw_3" style="display: none;color: red">密码不能为空</span>
+            </div>
+        </div>
+        <div class="login-center clearfix">
+            <div class="login-center-img"><img src="http://yanshi.sucaihuo.com/modals/49/4979/demo/img/password.png"/>
+            </div>
+            <div class="login-center-input ">
+                <input id="login-center-input1" type="text" name="usercode" value="" placeholder="请输入您的验证码"
+                       onfocus="this.placeholder=''" onblur="this.placeholder='请输入您的验证码'"/>&nbsp;
+                <button type="button" id="get_usercode" style="background: none;border: none" onclick="sendsms();">
+                    获取验证码
+                </button>
+                <div class="login-center-input-text">验证码</div>
+            </div>
+            <div class="login-center clearfix"></div>
+            <!--<div id="forget"><a href="">忘记密码</a></div>-->
+            <!--<div id="none"><a href="">没有账号</a></div>-->
+            <div class="login-center clearfix"></div>
+            <div><input type="submit" placeholder="确认重置" class="login-button" value="确认重置"></div>
+        </div>
+    </form>
+</div>
+<script>
+    function sendsms() {
+        phone = $('#phone').val();
+        $.ajax({
+            url: "/Verificationc/",
+            type: 'POST',
+            data: {phone}
+        })
+    }
+
+    $('#phone').change(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/chazhao',
+            data: {'phone': $('#phone').val()},
+            dataType: 'json',
+            success: function (x) {
+                if (x) {
+                    $('#phone_1').css('display', 'none')
+                }
+                else {
+                    $('#phone_1').css('display', 'block')
+                }
+            }
+        })
+    });
+
+    function mima() {
+        //			密码
+        var pwd1 = document.getElementById('pw').value;
+        if (pwd1) {
+            var vpwd = /^[A-Za-z0-9]+$/;
+            if (!vpwd.test(pwd1)) {
+                $('#pw_1').css('display', 'block');
+                $('#pw_2').css('display', 'none');
+                $('#pw_3').css('display', 'none');
+                pwd1.focus();
+                return false;
+            } else if (pwd1.length < 6) {
+                $('#pw_1').css('display', 'none');
+                $('#pw_2').css('display', 'block');
+                $('#pw_3').css('display', 'none');
+                pwd1.focus();
+                return false;
+            }
+            else{
+                $('#pw_1').css('display', 'none');
+                $('#pw_2').css('display', 'none');
+                $('#pw_3').css('display', 'none');
+            }
+        } else {
+            $('#pw_1').css('display', 'none');
+            $('#pw_2').css('display', 'none');
+            $('#pw_3').css('display', 'block');
+            pwd1.focus();
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

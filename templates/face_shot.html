@@ -1,0 +1,28 @@
+{#<!doctype html>#}
+<html lang="en">
+<link rel="shortcut icon" type="image/x-icon" href="http://file.g3.xmgc360.com/logo1.png">
+<head>
+    <meta charset="UTF-8">
+    <title>js调用本地摄像头截图并用ajax上传至后台服务器完成交互</title>
+    <link rel="stylesheet" href="/static/face/style.css">
+    <script src="/static/face/jquery-1.8.3.min.js"></script>
+    <script src="/static/face/videoPort.js"></script>
+</head>
+<body>
+    <div class="uploadimg-group">
+        <img src="" id="uploadimg">
+        <button class="loadbtn">开启摄像头</button>
+        <button class="uploadbtn">发送</button>
+    </div>
+    <div class="video_port" id="video_port">
+        <video id="video" width="400" height="300"></video>
+        <canvas id="vi_canver" width="400" height="300" hidden></canvas>
+        <p class="picturebtn">
+            <button id="screenshots" class="screenshots">截取图像</button>
+            <span class="myshu"></span>
+            <button id="close" class="closecamera">关闭摄像头</button>
+        </p>
+        <input type="text" id="phone_num" value="{{ phone_num }}" style="display: none">
+    </div>
+</body>
+</html>

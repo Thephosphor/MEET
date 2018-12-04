@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3aa1f21a-76ac-4adb-b5ec-1f50be1370dc" name="106.15.199.220" url="http://106.15.199.220">
+        <fileTransfer host="106.15.199.220" port="22" rootFolder="/home/MEET" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,26 @@
+{#<!DOCTYPE html>#}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="x" value="kziudshf,kJDFb">
+<button id="lio">kUedgaksedg</button>
+<span id="span" style="display: none">SDgzfgzdfgzdfnxfghbxghbxgnhhhhhhh</span>
+<script src="/static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<script>
+    $('#lio').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: '/css',
+            data: {'x': $('#x').val()},
+            dataType: 'json',
+            success: function (response) {
+                alert(response['foo'])
+            }
+        })
+    })
+</script>
+</body>
+</html>

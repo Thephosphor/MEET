@@ -1,0 +1,492 @@
+{#<!doctype html>#}
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>遇见--积分商城</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/static/assets/images/logo1.png">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="/static/assets/css/icon-font.min.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/static/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="/static/assets/css/style.css">
+
+    <!-- Modernizer JS -->
+    <script src="/static/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body onload="cqm()">
+
+<!-- Header Section Start -->
+<div class="header-section section">
+
+    <!-- Header Bottom Start -->
+    <div class="header-bottom header-bottom-one header-sticky">
+        <div class="container">
+            <div class="row align-items-center justify-content-between">
+
+                <div class="col mt-15 mb-15">
+                    <!-- Logo Start -->
+                    <div class="header-logo">
+                        <a href="/fit/">
+                            <img src="/static/assets/images/logo21.png" alt="">
+                            <img src="/static/assets/images/logo1.png" alt="">
+                        </a>
+                    </div><!-- Logo End -->
+                </div>
+
+                <div class="col order-12 order-lg-2 order-xl-2 d-none d-lg-block">
+                    <!-- Main Menu Start -->
+                    <div class="main-menu">
+                        <nav>
+                            <ul>
+                                <li class="active"><a href="/fit/">匹配</a></li>
+                                <li class="menu-item-has-children"><a href="/guangchang">广场</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/guangchang">发布心里话</a>
+                                        </li>
+                                        <li class="menu"><a href="/duihua">我的会话</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children"><a href="">测试</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu"><a href="/sd_ceshi">深度测试</a></li>
+                                        <li class="menu"><a href="/quwei_after">趣味测试</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item-has-children">
+                                    {% for foo in style_list %}
+                                        {% if foo.user_id == user_id %}
+                                            <a href="/person_space"><img src="{{ foo.user_head }}" alt=""
+                                                                         style="width: 26px;height: 26px;border-radius: 100%;"></a>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <ul class="sub-menu">
+                                        <li><a href="/person_space">用户信息</a></li>
+                                        {% if user_list.user_admin == 1 %}
+                                            <li><a href="/admin">用户管理</a></li>
+                                            <li><a href="/admin/topic">主题管理</a></li>
+                                        {% endif %}
+                                        <li><a href="/jifenshop">会员任务</a></li>
+                                        <li><a href="/jifenshop">积分商城</a></li>
+                                        <li><a href="/Alogout/">退出登录</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div><!-- Main Menu End -->
+                </div>
+                <!-- Mobile Menu -->
+                <div class="mobile-menu order-12 d-block d-lg-none col"></div>
+
+            </div>
+        </div>
+    </div><!-- Header Bottom End -->
+
+</div><!-- Header Section End -->
+
+<!-- Cart Overlay -->
+<div class="cart-overlay"></div>
+
+<!-- Page Banner Section Start中间的图 -->
+<div class="page-banner-section section">
+    <div class="page-banner-wrap row row-0 d-flex align-items-center ">
+
+        <!-- Page Banner -->
+        <div class="col-lg-4 col-12 order-lg-2 d-flex align-items-center justify-content-center">
+            <div class="page-banner">
+                <h1>遇见</h1>
+                <h5>在远方，有一座默默的雪峰，雪峰下有一块石，石上留着一个名，虽寒冷，却一直温暖在岁月。总是一个人漂泊，匆匆地来，又款款而去，跋涉的足迹，在天涯，在海角，在彼此的心里。</h5>
+                <div class="breadcrumb">
+                    <ul>
+                        <li><a href="/jifenshop">积分</a></li>
+                        <li><a href="/jifenshop">商城</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-1">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201809/276367364172080361614629869.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+        <!-- Banner -->
+        <div class="col-lg-4 col-md-6 col-12 order-lg-3">
+            <div class="banner"><a href="#"><img
+                    src="https://static.meiguoshenpo.com/image/201803/276365774454602849964222010.jpg" alt="Banner"></a>
+            </div>
+        </div>
+
+    </div>
+</div><!-- Page Banner Section End -->
+
+<!-- Faq Section Start -->
+<div class="faq-section section mt-50">
+    <div class="container">
+        <div class="row row-25">
+
+            <div class="col-lg-12 col-12">
+
+                <!-- Blog Sidebar -->
+                <div class="blog-sidebar">
+
+                    <h4 class="title">任务列表</h4>
+                    <h4 style="float: right">我的积分：{{ user_list.user_integral }}</h4>
+
+                    <div class="tags-cloud">
+                        {% for row in task_list %}
+                            <a href="/integral_get?task_id={{ row.task_id }}&task_integral={{ row.task_integral }}"
+                               title="点击领取" id="{{ row.task_id }}1"
+                               style="display: none;color: black">{{ row.task_content }}&nbsp;|&nbsp;&nbsp;
+                                {{ row.task_integral }}积分</a>
+                            <a title="领取过或未达到领取条件" id="{{ row.task_id }}2"
+                               style="display: none;background: rgba(123,140,145,0.64);color: black">{{ row.task_content }}&nbsp;|&nbsp;&nbsp;
+                                {{ row.task_integral }}积分</a>
+                        {% endfor %}
+                        <input type="text" value="{{ task_list_daily.task_1 }}" id="task_1" style="display: none">
+                        <input type="text" value="{{ task_list_daily.task_2 }}" id="task_2" style="display: none">
+                        <input type="text" value="{{ task_list_once.task_3 }}" id="task_3" style="display: none">
+                        <input type="text" value="{{ task_list_once.task_4 }}" id="task_4" style="display: none">
+                        <input type="text" value="{{ task_list_once.task_5 }}" id="task_5" style="display: none">
+                        <input type="text" value="{{ task_list_once.task_6 }}" id="task_6" style="display: none">
+                        <input type="text" value="{{ task_list_once.task_7 }}" id="task_7" style="display: none">
+                        <input type="text" value="{{ task_list_once.task_8 }}" id="task_8" style="display: none">
+                    </div>
+                </div>
+            </div>
+        </div><!-- Faq Section End -->
+
+        <!-- Product Section Start -->
+        <div class="product-section section mt-70 mb-50">
+            <div class="container">
+                <div class="row">
+                    <h3 class="title"><a href="/ls_xiadan">下单记录</a></h3>
+                    <div class="col-12">
+                        <!-- Shop Product Wrap Start -->
+                        <form action="" method="post">
+                            <div class="shop-product-wrap grid row">
+                                {% for row in shop_list %}
+                                    <div class="col-md-4 pb-30 pt-10">
+                                        <!-- Product Start --><!-- 平铺 -->
+                                        <div class="ee-product">
+                                            <!-- Image -->
+                                            <div class="image">
+                                                <a href="/xiadan?commodity_id={{ row.commodity_id }}" class="img"><img
+                                                        src={{ row.commodity_img }} title="{{ row.commodity_name }}"></a>
+                                            </div>
+                                            <!-- Content -->
+                                            <div class="content">
+                                                <!-- Category & Title -->
+                                                <div class="category-title">
+                                                    <a href="/xiadan?commodity_id={{ row.commodity_id }}"
+                                                       class="cat">{{ row.commodity_name }}</a>
+                                                    <h5 class="title"><a
+                                                            href="/xiadan?commodity_id={{ row.commodity_id }}">{{ row.commodity_des }}</a>
+                                                    </h5>
+                                                </div>
+                                                <!-- Price & Ratting -->
+                                                <div class="price-ratting">
+                                                    <h5 class="price">积分：{{ row.commodity_cost }}</h5>
+                                                    <div class="ratting">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div><!-- Product End -->
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- Feature Product Section End -->
+        </div>
+        <!-- Brands Section Start -->
+        <div class="brands-section section mb-90">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Brand Slider Start -->
+                    <div class="brand-slider col">
+                        <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-1.png" alt="Brands">
+                        </div>
+                        <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-2.png" alt="Brands">
+                        </div>
+                        <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-3.png" alt="Brands">
+                        </div>
+                        <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-4.png" alt="Brands">
+                        </div>
+                        <div class="brand-item col"><img src="http://file.g3.xmgc360.com/brand-5.png" alt="Brands">
+                        </div>
+                    </div><!-- Brand Slider End -->
+
+                </div>
+            </div>
+        </div><!-- Brands Section End -->
+
+        <!-- Footer Section Start -->
+        <div class="footer-section section bg-ivory">
+
+            <!-- Footer Top Section Start -->
+            <div class="footer-top-section section pt-90 pb-50">
+                <div class="container">
+
+                    <div class="row">
+
+                        <!-- Footer Widget Start -->
+                        <div class="col-lg-3 col-md-6 col-12 mb-40">
+                            <div class="footer-widget">
+
+                                <h4 class="widget-title">CONTACT INFO</h4>
+
+                                <p class="contact-info">
+                                    <span>Address</span>
+                                    You address will be here <br>
+                                    Lorem Ipsum text </p>
+
+                                <p class="contact-info">
+                                    <span>Phone</span>
+                                    <a href="tel:01234567890">01234 567 890</a>
+                                    <a href="tel:01234567891">01234 567 891</a>
+                                </p>
+
+                                <p class="contact-info">
+                                    <span>Web</span>
+                                    <a href="mailto:info@example.com">info@example.com</a>
+                                    <a href="#">www.example.com</a>
+                                </p>
+
+                            </div>
+                        </div><!-- Footer Widget End -->
+
+                        <!-- Footer Widget Start -->
+                        <div class="col-lg-3 col-md-6 col-12 mb-40">
+                            <div class="footer-widget">
+
+                                <h4 class="widget-title">CUSTOMER CARE</h4>
+
+                                <ul class="link-widget">
+                                    <li><a href="#">About us</a></li>
+                                    <li><a href="#">Features</a></li>
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Cart</a></li>
+                                    <li><a href="#">Checkout</a></li>
+                                    <li><a href="#">Wishlist</a></li>
+                                    <li><a href="#">blog</a></li>
+                                    <li><a href="#">Contact</a></li>
+                                </ul>
+
+                            </div>
+                        </div><!-- Footer Widget End -->
+
+                        <!-- Footer Widget Start -->
+                        <div class="col-lg-3 col-md-6 col-12 mb-40">
+                            <div class="footer-widget">
+
+                                <h4 class="widget-title">INFORMATION</h4>
+
+                                <ul class="link-widget">
+                                    <li><a href="#">Track your order</a></li>
+                                    <li><a href="#">Locate Store</a></li>
+                                    <li><a href="#">Online Support</a></li>
+                                    <li><a href="#">Terms & Conditions</a></li>
+                                    <li><a href="#">Payment</a></li>
+                                    <li><a href="#">Shipping & Returns</a></li>
+                                    <li><a href="#">Gift coupon</a></li>
+                                    <li><a href="#">Special coupon</a></li>
+                                </ul>
+
+                            </div>
+                        </div><!-- Footer Widget End -->
+
+                        <!-- Footer Widget Start -->
+                        <div class="col-lg-3 col-md-6 col-12 mb-40">
+                            <div class="footer-widget">
+
+                                <h4 class="widget-title">LATEST TWEET</h4>
+
+                                <div class="footer-tweet"></div>
+
+                            </div>
+                        </div><!-- Footer Widget End -->
+
+                    </div>
+
+                </div>
+            </div><!-- Footer Bottom Section Start -->
+
+            <!-- Footer Bottom Section Start -->
+            <div class="footer-bottom-section section">
+                <div class="container">
+                    <div class="row">
+
+                        <!-- Footer Copyright -->
+                        <div class="col-lg-6 col-12">
+                            <div class="footer-copyright"><p>&copy; Copyright, 2018 All Rights Reserved by <a
+                                    href="https://freethemescloud.com/">Free themes Cloud</a></p></div>
+                        </div>
+
+                        <!-- Footer Payment Support -->
+                        <div class="col-lg-6 col-12">
+                            <div class="footer-payments-image"><img src="/static/assets/images/payment-support.png"
+                                                                    alt="Payment Support Image"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- Footer Bottom Section Start -->
+
+        </div><!-- Footer Section End -->
+
+    </div>
+</div>
+<!-- JS
+============================================ -->
+
+<!-- jQuery JS -->
+<script src="/static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+<!-- Popper JS -->
+<script src="/static/assets/js/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="/static/assets/js/bootstrap.min.js"></script>
+<!-- Plugins JS -->
+<script src="/static/assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="/static/assets/js/main1.js"></script>
+
+
+<script>
+    var lastTime = new Date().getTime();
+    var currentTime = new Date().getTime();
+    var timeOut = 15 * 60 * 1000;
+    {#var timeOut = 20 * 1000;#}
+    //设置超时时间: 10分
+    $(function () {
+        /* 鼠标移动事件 */
+        $(document).mouseover(function () {
+            lastTime = new Date().getTime(); //更新操作时间
+        });
+    });
+
+    function testTime() {
+        currentTime = new Date().getTime();
+        //更新当前时间
+        if (currentTime - lastTime > timeOut) {
+            //判断是否超时
+            var state = 1
+            $.ajax({
+                url: "/Alogout/",
+                type: 'POST',
+                data: {state}
+            })
+            console.log("超时");
+        }
+    }
+
+    /* 定时器 间隔1秒检测是否长时间未操作页面 */
+    window.setInterval(testTime, 1000);
+</script>
+<script>
+
+    function cqm() {
+
+        var val_task_1 = document.getElementById('task_1').value;
+        var val_task_2 = document.getElementById('task_2').value;
+        var val_task_3 = document.getElementById('task_3').value;
+        var val_task_4 = document.getElementById('task_4').value;
+        var val_task_5 = document.getElementById('task_5').value;
+        var val_task_6 = document.getElementById('task_6').value;
+        var val_task_7 = document.getElementById('task_7').value;
+        var val_task_8 = document.getElementById('task_8').value;
+        if (val_task_1 == '1') {
+            document.getElementById('11').style.display = 'block';
+            document.getElementById('12').style.display = 'none';
+        }
+        else {
+            document.getElementById('11').style.display = 'none';
+            document.getElementById('12').style.display = 'block';
+        }
+        if (val_task_2 == '1') {
+            document.getElementById('21').style.display = 'block';
+            document.getElementById('22').style.display = 'none';
+        }
+        else {
+            document.getElementById('21').style.display = 'none';
+            document.getElementById('22').style.display = 'block';
+        }
+        if (val_task_3 == '1') {
+            document.getElementById('31').style.display = 'block';
+            document.getElementById('32').style.display = 'none';
+        }
+        else {
+            document.getElementById('31').style.display = 'none';
+            document.getElementById('32').style.display = 'block';
+        }
+        if (val_task_4 == '1') {
+            document.getElementById('41').style.display = 'block';
+            document.getElementById('42').style.display = 'none';
+        }
+        else {
+            document.getElementById('41').style.display = 'none';
+            document.getElementById('42').style.display = 'block';
+        }
+        if (val_task_5 == '1') {
+            document.getElementById('51').style.display = 'block';
+            document.getElementById('52').style.display = 'none';
+        }
+        else {
+            document.getElementById('51').style.display = 'none';
+            document.getElementById('52').style.display = 'block';
+        }
+        if (val_task_6 == '1') {
+            document.getElementById('61').style.display = 'block';
+            document.getElementById('62').style.display = 'none';
+        }
+        else {
+            document.getElementById('61').style.display = 'none';
+            document.getElementById('62').style.display = 'block';
+        }
+        if (val_task_7 == '1') {
+            document.getElementById('71').style.display = 'block';
+            document.getElementById('72').style.display = 'none';
+        }
+        else {
+            document.getElementById('71').style.display = 'none';
+            document.getElementById('72').style.display = 'block';
+        }
+        if (val_task_8 == '1') {
+            document.getElementById('81').style.display = 'block';
+            document.getElementById('82').style.display = 'none';
+        }
+        else {
+            document.getElementById('81').style.display = 'none';
+            document.getElementById('82').style.display = 'block';
+        }
+    }
+</script>
+</body>
+
+</html>
